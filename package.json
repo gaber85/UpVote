@@ -1,0 +1,31 @@
+{
+  "name": "upvote",
+  "version": "1.0.0",
+  "description": "small app where you can add topics and vote them up or down. Similar to reddit.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gaber85/UpVote.git"
+  },
+  "author": "Gabe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gaber85/UpVote/issues"
+  },
+  "homepage": "https://github.com/gaber85/UpVote#readme",
+  "devDependencies": {
+    "eslint": "5.6.0",
+    "eslint-plugin-json": "1.2.1",
+    "eslint-plugin-react": "7.11.1"
+  },
+  "dependencies": {
+    "react": "16.6.0",
+    "react-dom": "16.6.0",
+    "react-redux": "5.1.0",
+    "react-scripts": "2.1.1",
+    "redux": "4.0.1"
+  }
+}
