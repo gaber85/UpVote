@@ -24,10 +24,11 @@ form {
   border-style: none;
   outline: none;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  transition: .1s linear;
 }
 
 .input-bar:focus {
-  transition: 10ms;
+  transition: .1s linear;
   width: 300px;
 }
 
