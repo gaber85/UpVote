@@ -4,15 +4,16 @@ import moment from 'moment';
 class TopicListItem extends React.Component {
 
   render() {
-    const {topics} = this.props;
+    const {topics} = this.props;   
+    console.log('this PROPS',this.props);
     
     return (
       topics.map(topic => {
         return (
         <div className="topicItem" key={topic._id}>
           <div className="votingComp">
-            <button className="accessory-button">⬆</button>
-            <div className="voteCounter">{topic.score}</div>
+            <button className="accessory-button" onClick={() => this.props.voteUp()}>⬆</button>
+            <div className="voteCounter">{this.props.voting}</div>
             <button className="accessory-button">⬇</button>
           </div>
           <div className="topicInfo">
