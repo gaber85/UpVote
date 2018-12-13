@@ -41,6 +41,7 @@ form {
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  margin: 20px;
 }
 .votingComp {
   display: flex;
@@ -74,7 +75,7 @@ form {
   flex: 1;
 }
 .content {
-  font-size: 35px;
+  font-size: 25px;
   padding-bottom: 10px;
 }
 .date {

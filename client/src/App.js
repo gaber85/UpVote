@@ -1,32 +1,26 @@
 import React from 'react';
 import './App.css';
+import NewTopic from './components/new-topic';
+import TopicList from './components/topic-list';
 
 class App extends React.Component {
+  state = {
+    topics: []
+  }
+
+  BASE_URL = 'https://private-anon-3435a9e08c-codemocracy.apiary-mock.com/topics';
+
+  componentDidMount() {
+    fetch(this.BASE_URL)
+      .then(response => response.json())
+      .then(topics => this.setState({topics:topics}))
+  }
+
   render() {
     return (
       <div className="container">
-        <div className="addTopic">
-          <form>
-            <input type="text" className="input-bar" placeholder="add new topic..."></input>
-            <button type="submit" className="accessory-button">+</button>
-          </form>
-        </div>
-        <div className="topicList">
-          <div className="topicItem">
-            <div className="votingComp">
-              <button className="accessory-button">⬆</button>
-              <div className="voteCounter">4</div>
-              <button className="accessory-button">⬇</button>
-            </div>
-            <div className="topicInfo">
-              <div className="content">Topic content goes here</div>
-              <div className="date">Created On <b> Date goes here</b></div>
-            </div>
-            <div>
-              <button className="accessory-button">🗑</button>
-            </div>
-          </div>
-        </div>
+        <NewTopic />
+        <TopicList topics={this.state.topics} />
       </div>
     )
   }
