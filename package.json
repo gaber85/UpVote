@@ -23,7 +23,11 @@
   },
   "dependencies": {
     "express": "^4.16.4",
+    "koa": "^2.6.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
     "moment": "^2.23.0",
+    "mongoose": "^5.3.16",
     "react": "16.6.0",
     "react-dom": "16.6.0",
     "react-redux": "5.1.0",

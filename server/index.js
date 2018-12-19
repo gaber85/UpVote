@@ -9,7 +9,5 @@ const router = require('./router.js');
 app.use(bodyParser());
 app.use(router.routes());
 
-
-
 app.listen(PORT, () => console.log( // eslint-disable-line no-console
   `Server running on port: ${PORT}`));
