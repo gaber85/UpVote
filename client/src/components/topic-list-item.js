@@ -21,7 +21,7 @@ class TopicListItem extends React.Component {
             <div className="date">Created On <b> {moment(topic.published_at).format('MMM Do')}</b></div>
           </div>
           <div>
-            <button className="accessory-button">🗑</button>
+            <button className="trash-can accessory-button">🗑</button>
           </div>
         </div>
         )

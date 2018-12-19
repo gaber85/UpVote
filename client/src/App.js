@@ -3,7 +3,7 @@ import './App.css';
 import NewTopic from './components/new-topic';
 import TopicList from './components/topic-list';
 import { connect } from 'react-redux';
-import { voteUp, voteDown } from './redux/actions';
+import { voteUp } from './redux/actions';
 
 class App extends React.Component {
   state = {
