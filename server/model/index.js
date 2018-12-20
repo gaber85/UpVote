@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/codemocracy');
+mongoose.connect('mongodb://localhost/codemocracy', {
+  useNewUrlParser: true
+});
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:')); // eslint-disable-line no-console

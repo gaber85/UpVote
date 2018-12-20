@@ -6,7 +6,7 @@ class TopicList extends React.Component {
     
     return (
       <div className="topicList">
-        <TopicListItem topics={this.props.topics} voteUp={this.props.voteUp} voting={this.props.voting} />
+        <TopicListItem />
       </div>
     )
   }

@@ -1,19 +1,27 @@
-export const voteUp = (id) => ({
-  type: 'VOTE_UP',
-  //id: id
+export const vote = (id, direction) => ({
+  type: 'VOTE',
+  id: id,
+  direction: direction,
 });
 
-export const voteDown = (id) => ({
-  type: 'VOTE_DOWN',
-  //id: id
+// export const voteDown = (id) => ({
+//   type: 'VOTE_DOWN',
+//   id: id,
+// });
+
+// export const voteDown = (id) => ({
+//   type: 'VOTE_DOWN',
+//   //id: id
+// });
+
+
+
+export const getTopics = (allTopics) => ({
+  type: 'GET_TOPICS',
+  topics: allTopics,
 });
 
-export const addTopic = (content) => ({
-  type: 'ADD_TOPIC',
-  title: content
-});
-
-export const deleteTopic = (id) => ({
-  type: 'ADD_TOPIC',
-  id: id
-});
+// export const deleteTopic = (id) => ({
+//   type: 'ADD_TOPIC',
+//   id: id,
+// });

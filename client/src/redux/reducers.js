@@ -1,18 +1,26 @@
 import { combineReducers } from 'redux';
 
-const voting = (state = 0, action) => {
+const topics = (state = [], action) => {
   switch(action.type) {
-    case 'VOTE_UP':
-      return state + 1;
-    case 'VOTE_DOWN':
-      return state - 1;
+    case 'GET_TOPICS':
+      return action.topics;
+    case 'VOTE':
+      state.find(topic => {
+        if (topic._id === action.id && action.direction === 'up') {
+          topic.score += 1;
+        } else {
+          topic.score -= 1;
+        }
+        return true;
+      });
+      return [ ...state ];
     default: 
     return state;
   }
 }
 
 const reducers = combineReducers({
-  voting
+  topics,
 })
 
 export default reducers;
