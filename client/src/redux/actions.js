@@ -4,24 +4,17 @@ export const vote = (id, direction) => ({
   direction: direction,
 });
 
-// export const voteDown = (id) => ({
-//   type: 'VOTE_DOWN',
-//   id: id,
-// });
-
-// export const voteDown = (id) => ({
-//   type: 'VOTE_DOWN',
-//   //id: id
-// });
-
-
+export const addNewTopic = (content) => ({
+  type: 'ADD_TOPIC',
+  title: content,
+});
 
 export const getTopics = (allTopics) => ({
   type: 'GET_TOPICS',
   topics: allTopics,
 });
 
-// export const deleteTopic = (id) => ({
-//   type: 'ADD_TOPIC',
-//   id: id,
-// });
+export const deleteTopic = (id) => ({
+  type: 'DELETE_TOPIC',
+  id: id,
+});

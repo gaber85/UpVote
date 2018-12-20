@@ -14,6 +14,14 @@ const topics = (state = [], action) => {
         return true;
       });
       return [ ...state ];
+    case 'ADD_TOPIC':
+      return [ ...state ];
+    // case 'DELETE_TOPIC':
+    //   state.find(topic => {
+    //     if (topic._id === action.id) {
+
+    //     }
+    //   })
     default: 
     return state;
   }

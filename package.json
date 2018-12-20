@@ -22,9 +22,11 @@
     "eslint-plugin-react": "7.11.1"
   },
   "dependencies": {
+    "@koa/cors": "^2.2.3",
     "express": "^4.16.4",
     "koa": "^2.6.2",
     "koa-bodyparser": "^4.2.1",
+    "koa-cors": "0.0.16",
     "koa-router": "^7.4.0",
     "moment": "^2.23.0",
     "mongoose": "^5.3.16",

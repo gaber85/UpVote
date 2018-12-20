@@ -1,12 +1,12 @@
 import React from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
-import { vote, getTopics } from './redux/actions';
+import { vote, getTopics } from '../redux/actions';
 
 
 class TopicListItem extends React.Component {
 
-  BASE_URL = 'https://localhost:3000/topics';
+  BASE_URL = 'http://localhost:3000/topics';
 
   componentDidMount() {
     fetch(this.BASE_URL)
@@ -19,7 +19,14 @@ class TopicListItem extends React.Component {
       method: 'put'
       }
     );
-    this.vote(id,direction);
+    this.props.vote(id,direction);
+  }
+
+  handleDelete (id) {
+    fetch(`${this.BASE_URL}/${id}`, {
+      method: 'delete'
+      }
+    );
   }
 
   render() {
@@ -30,16 +37,17 @@ class TopicListItem extends React.Component {
         return (
         <div className="topicItem" key={topic._id}>
           <div className="votingComp">
-            <button className="accessory-button" onClick={this.handlerVote(topic._id, 'up')}>⬆</button>
-            <div className="voteCounter">{this.props.voting}</div>
-            <button className="accessory-button" onClick={this.handlerVote(topic._id, 'down')}>⬇</button>
+            <button className="accessory-button" onClick={() => this.handlerVote(topic._id, 'up')}>⬆</button>
+            <div className="voteCounter">{topic.score}</div>
+            <button className="accessory-button" onClick={() => this.handlerVote(topic._id, 'down')}>⬇</button>
           </div>
           <div className="topicInfo">
             <div className="content">{topic.title}</div>
             <div className="date">Created On <b> {moment(topic.published_at).format('MMM Do')}</b></div>
           </div>
           <div>
-            <button className="trash-can accessory-button">🗑</button>
+            <button className="trash-can accessory-button" 
+            onClick={() => this.handleDelete(topic._id)}>🗑</button>
           </div>
         </div>
         )

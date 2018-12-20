@@ -5,7 +5,7 @@ class TopicList extends React.Component {
   render() {
     
     return (
-      <div className="topicList">
+      <div className="topicList" key={'001'}>
         <TopicListItem />
       </div>
     )
