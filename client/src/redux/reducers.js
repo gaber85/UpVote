@@ -8,20 +8,19 @@ const topics = (state = [], action) => {
       state.find(topic => {
         if (topic._id === action.id && action.direction === 'up') {
           topic.score += 1;
-        } else {
+        } else if (topic._id === action.id && action.direction === 'down') {
           topic.score -= 1;
         }
-        return true;
+        return topic;
       });
       return [ ...state ];
     case 'ADD_TOPIC':
-      return [ ...state ];
-    // case 'DELETE_TOPIC':
-    //   state.find(topic => {
-    //     if (topic._id === action.id) {
-
-    //     }
-    //   })
+      return [
+        {
+          title: action.title,
+        },
+        ...state,
+      ];
     default: 
     return state;
   }

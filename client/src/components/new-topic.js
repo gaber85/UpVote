@@ -11,11 +11,9 @@ class NewTopic extends React.Component {
   }
 
   BASE_URL = 'http://localhost:3000/topics';
-  componentDidMount() {
-    fetch(this.BASE_URL)
-      .then(response => response.json())
-      .then(topics => this.props.getTopics(topics));
-  }
+  // componentDidMount() {
+  //   
+  // }
 
   updateNewTopic = e => {
     this.setState({ title: e.target.value});
@@ -23,13 +21,15 @@ class NewTopic extends React.Component {
 
   handleSubmit = () => {
     if (this.state.title) {
-      const { title } = this.state;
+      //const { title } = this.state;
+      //console.log(this.state);
       fetch(this.BASE_URL, {
         method: 'post',
         body: JSON.stringify(this.state),
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
-      this.props.addNewTopic(title);
-
     }
   }
 

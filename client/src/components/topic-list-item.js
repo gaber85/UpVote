@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
-import { vote, getTopics } from '../redux/actions';
+import { vote, getTopics, deleteTopic } from '../redux/actions';
 
 
 class TopicListItem extends React.Component {
@@ -12,6 +12,11 @@ class TopicListItem extends React.Component {
     fetch(this.BASE_URL)
       .then(response => response.json())
       .then(topics => this.props.getTopics(topics));
+  }
+  componentWillUpdate() {
+    (fetch(this.BASE_URL))
+        .then(response => response.json())
+        .then(topics => this.props.getTopics(topics));
   }
 
   handlerVote (id, direction) {
@@ -64,6 +69,7 @@ const mapDispatchToProps = (dispatch) => ({
   // Map your dispatch actions
   vote: (id, direction) => dispatch(vote(id, direction)),
   getTopics: (allTopics) => dispatch(getTopics(allTopics)),
+  deleteTopic: (id) => dispatch(deleteTopic(id)),
 });
 
 export default connect(

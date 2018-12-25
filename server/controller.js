@@ -16,11 +16,12 @@ exports.createNew = async (ctx) => {
   try {
     const { title } = ctx.request.body;
     const newTopic = await new Topic({
-      title,
+      title: title,
       score: 0,
     });
-    newTopic.save((err) => {
+    newTopic.save((err, newtopic) => {
       if (err) return console.error(err); // eslint-disable-line no-console
+      console.log(newtopic); // eslint-disable-line no-console
     });
     ctx.body = newTopic;
     ctx.status = 201;
