@@ -21,7 +21,7 @@ exports.createNew = async (ctx) => {
     });
     newTopic.save((err, newtopic) => {
       if (err) return console.error(err); // eslint-disable-line no-console
-      console.log(newtopic); // eslint-disable-line no-console
+      console.log('Successfully created new topic:\n', newtopic); // eslint-disable-line no-console
     });
     ctx.body = newTopic;
     ctx.status = 201;
@@ -42,6 +42,7 @@ exports.deleteTopic = async (ctx) => {
       if (err) {
         console.log('something went wrong deleting topic'); // eslint-disable-line no-console
       }
+      console.log('Successfully deleted topic:\n', doc); // eslint-disable-line no-console
       ctx.status = 200; // what is the right status after deleting something?
       ctx.body = {successfully_deleted: doc};
     });
@@ -59,8 +60,9 @@ exports.vote = async (ctx) => {
   try {
     const id = ctx.params.id;
     const direction = ctx.params.direction;
-    direction === 'up' ? await Topic.findOneAndUpdate({ _id : id }, {$inc : { score : 1}})
-      : await Topic.findOneAndUpdate({ _id : id }, {$inc : { score : -1}});
+    direction === 'up' ? await Topic.findOneAndUpdate({ _id : id }, {$inc : { score : 1}}, {useFindAndModify: false})
+      : await Topic.findOneAndUpdate({ _id : id }, {$inc : { score : -1}}, {useFindAndModify: false});
+    console.log('Voted: ', direction); // eslint-disable-line no-console
     ctx.body = 'Voted';
   } catch (err) {
     ctx.status = 500;

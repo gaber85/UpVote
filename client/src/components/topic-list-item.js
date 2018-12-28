@@ -18,9 +18,7 @@ class TopicListItem extends React.Component {
     this.fetchAllTopics();
   }
   // componentWillUpdate() {
-  //   (fetch(this.BASE_URL))
-  //       .then(response => response.json())
-  //       .then(topics => this.props.getTopics(topics));
+  //   this.fetchAllTopics();
   // }
 
   handlerVote (id, direction) {

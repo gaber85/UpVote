@@ -16,7 +16,9 @@ class NewTopic extends React.Component {
     this.setState({ title: e.target.value});
   }
 
-  handleSubmit = () => {
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('in handleSubmit');
     if (this.state.title) {
       fetch(this.BASE_URL, {
         method: 'post',
@@ -24,16 +26,9 @@ class NewTopic extends React.Component {
         headers: {
           'Content-Type': 'application/json'
         }
-      }).then(fetch(this.BASE_URL)
-        .then(response => response.json())
-        .then(topics => this.props.getTopics(topics))
-      );
+      });
     }
-  }
 
-  submit = (e) => {
-    e.preventDefault();
-    this.handleSubmit();
     this.setState({
       title: '',
     })
@@ -42,7 +37,7 @@ class NewTopic extends React.Component {
   render() {
     return (
       <div className="addTopic">
-        <form className="grow" onSubmit={this.submit}>
+        <form className="grow" onSubmit={this.handleSubmit}>
           <input type="text" 
             className="input-bar" 
             placeholder="add new topic..."
