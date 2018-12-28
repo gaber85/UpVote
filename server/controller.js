@@ -15,11 +15,11 @@ exports.getAll = async (ctx) => {
 exports.createNew = async (ctx) => {
   try {
     const { title } = ctx.request.body;
-    const newTopic = await new Topic({
+    const newTopic = new Topic({
       title: title,
       score: 0,
     });
-    newTopic.save((err, newtopic) => {
+    await newTopic.save((err, newtopic) => {
       if (err) return console.error(err); // eslint-disable-line no-console
       console.log('Successfully created new topic:\n', newtopic); // eslint-disable-line no-console
     });
@@ -38,10 +38,8 @@ exports.createNew = async (ctx) => {
 exports.deleteTopic = async (ctx) => {
   try {
     const id = ctx.params.id;
-    await Topic.findOneAndDelete({_id: id}, async (err, doc) => {
-      if (err) {
-        console.log('something went wrong deleting topic'); // eslint-disable-line no-console
-      }
+    await Topic.findByIdAndDelete(id, async (err, doc) => {
+      if (err) console.log('something went wrong deleting topic'); // eslint-disable-line no-console
       await console.log('Successfully deleted topic:\n', doc); // eslint-disable-line no-console
       ctx.status = 200; // what is the right status after deleting something?
       ctx.body = {successfully_deleted: doc};
