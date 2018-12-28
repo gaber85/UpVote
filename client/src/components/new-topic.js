@@ -29,6 +29,8 @@ class NewTopic extends React.Component {
       });
     }
 
+    this.props.addNewTopic(this.state.title, 0);
+
     this.setState({
       title: '',
     })
@@ -57,7 +59,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addNewTopic: (content) => dispatch(addNewTopic(content)),
+  addNewTopic: (title, score) => dispatch(addNewTopic(title, score)),
   getTopics: (allTopics) => dispatch(getTopics(allTopics)),
 })
 

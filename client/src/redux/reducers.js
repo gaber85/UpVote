@@ -18,6 +18,7 @@ const topics = (state = [], action) => {
       return [
         {
           title: action.title,
+          score: action.score,
         },
         ...state,
       ];

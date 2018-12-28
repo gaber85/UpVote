@@ -4,9 +4,10 @@ export const vote = (id, direction) => ({
   direction: direction,
 });
 
-export const addNewTopic = (content) => ({
+export const addNewTopic = (title, score) => ({
   type: 'ADD_TOPIC',
-  title: content,
+  title: title,
+  score: score,
 });
 
 export const getTopics = (allTopics) => ({
