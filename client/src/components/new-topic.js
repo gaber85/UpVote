@@ -28,9 +28,7 @@ class NewTopic extends React.Component {
         }
       });
     }
-
     this.props.addNewTopic(this.state.title, 0);
-
     this.setState({
       title: '',
     })
