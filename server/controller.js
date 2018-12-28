@@ -38,11 +38,11 @@ exports.createNew = async (ctx) => {
 exports.deleteTopic = async (ctx) => {
   try {
     const id = ctx.params.id;
-    await Topic.findOneAndDelete({_id: id}, (err, doc) => {
+    await Topic.findOneAndDelete({_id: id}, async (err, doc) => {
       if (err) {
         console.log('something went wrong deleting topic'); // eslint-disable-line no-console
       }
-      console.log('Successfully deleted topic:\n', doc); // eslint-disable-line no-console
+      await console.log('Successfully deleted topic:\n', doc); // eslint-disable-line no-console
       ctx.status = 200; // what is the right status after deleting something?
       ctx.body = {successfully_deleted: doc};
     });
