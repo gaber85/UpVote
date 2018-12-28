@@ -5,7 +5,7 @@ const topics = (state = [], action) => {
     case 'GET_TOPICS':
       return action.topics;
     case 'VOTE':
-      state.find(topic => {
+      state.forEach(topic => {
         if (topic._id === action.id && action.direction === 'up') {
           topic.score += 1;
         } else if (topic._id === action.id && action.direction === 'down') {
@@ -21,6 +21,9 @@ const topics = (state = [], action) => {
         },
         ...state,
       ];
+    case 'DELETE_TOPIC':
+      const newState = state.filter(topic => topic._id !== action.id)
+      return [ ...newState ];
     default: 
     return state;
   }

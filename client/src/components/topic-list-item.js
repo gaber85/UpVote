@@ -8,16 +8,20 @@ class TopicListItem extends React.Component {
 
   BASE_URL = 'http://localhost:3000/topics';
 
-  componentDidMount() {
+  fetchAllTopics () {
     fetch(this.BASE_URL)
       .then(response => response.json())
       .then(topics => this.props.getTopics(topics));
   }
-  componentWillUpdate() {
-    (fetch(this.BASE_URL))
-        .then(response => response.json())
-        .then(topics => this.props.getTopics(topics));
+
+  componentDidMount() {
+    this.fetchAllTopics();
   }
+  // componentWillUpdate() {
+  //   (fetch(this.BASE_URL))
+  //       .then(response => response.json())
+  //       .then(topics => this.props.getTopics(topics));
+  // }
 
   handlerVote (id, direction) {
     fetch(`${this.BASE_URL}/${id}/${direction}`, {
@@ -32,6 +36,7 @@ class TopicListItem extends React.Component {
       method: 'delete'
       }
     );
+    this.props.deleteTopic(id)
   }
 
   render() {
