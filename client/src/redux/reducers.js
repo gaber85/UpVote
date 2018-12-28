@@ -13,7 +13,7 @@ const topics = (state = [], action) => {
         }
         return topic;
       });
-      return [ ...state ];
+      return [ ...state ].sort((a, b) => b.score - a.score);
     case 'ADD_TOPIC':
       return [
         {
