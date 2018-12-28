@@ -60,6 +60,7 @@ exports.vote = async (ctx) => {
   try {
     const id = ctx.params.id;
     const direction = ctx.params.direction;
+    // need to add the option to findOneAndUpdate {useFindAndModify: false} because it uses modify by default
     direction === 'up' ? await Topic.findOneAndUpdate({ _id : id }, {$inc : { score : 1}}, {useFindAndModify: false})
       : await Topic.findOneAndUpdate({ _id : id }, {$inc : { score : -1}}, {useFindAndModify: false});
     console.log('Voted: ', direction); // eslint-disable-line no-console
